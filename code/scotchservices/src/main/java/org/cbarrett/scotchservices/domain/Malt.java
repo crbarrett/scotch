@@ -15,9 +15,10 @@
  */
 package org.cbarrett.scotchservices.domain;
 
+import org.cbarrett.common.domain.DomainObject;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class Malt {
+public class Malt implements DomainObject {
 
 	@JsonProperty
 	String name = null;
@@ -30,4 +31,36 @@ public class Malt {
 	public Malt(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		
+		result = prime * result + name.hashCode();
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object other) {
+		boolean result = false;
+
+		if (this == other) {
+			result = true;
+		} else if (other == null) {
+			result = false;
+		} else if (!(other instanceof Malt)) {
+			result = false;
+		} else {
+			Malt otherMalt= (Malt) other;
+			result = (name.equals(otherMalt.name));
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(Malt.class.getSimpleName());
+		sb.append("[name: " + name + "]");
+		return sb.toString();
+	}	
 }

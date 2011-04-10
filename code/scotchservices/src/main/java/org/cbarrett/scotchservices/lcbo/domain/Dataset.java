@@ -18,6 +18,7 @@ package org.cbarrett.scotchservices.lcbo.domain;
 import java.util.List;
 
 import org.cbarrett.common.domain.DomainObject;
+import org.cbarrett.common.util.TimeFormats;
 import org.cbarrett.scotchservices.lcbo.domain.serializer.JsonDateTimeDeserializer;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
@@ -211,36 +212,46 @@ public class Dataset implements DomainObject {
 
 	@Override
 	public int hashCode() {
-		return -1;
+		final int prime = 31;
+		int result = 1;
+		
+		result = prime * result + id;
+		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
+		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
+		result = prime * result + ((csvDump == null) ? 0 : csvDump.hashCode());
+		
+		return result;
 	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
 
-//	@Override
-//	public boolean equals(Object other) {
-//		boolean result = false;
-//
-//		if (this == other) {
-//			result = true;
-//		} else if (!(other instanceof Dataset)) {
-//			result = false;
-//		} else {
-//			Dataset otherDataset = (Dataset) other;
-//			result = ((id == otherDataset.id)
-//					&& ((createdAt == null) ? otherDataset.createdAt == null
-//							: createdAt.equals(otherDataset.createdAt)) && ((updatedAt == null) ? otherDataset.updatedAt == null
-//					: createdAt.equals(otherDataset.updatedAt)));
-//		}
-//		return result;
-//	}
-
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//
-//		sb.append(Integer.valueOf(id).toString());
-//		sb.append("\n");
-//	    sb.append("createdAt: " + createdAt.toString(arg0));
-//		sb.append("\n");
-//		sb.append(csvDump);
-//		return sb.toString();
-//	}
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof Dataset)) {
+			result = false;
+		} else {
+			Dataset otherDataset = (Dataset) otherObject;
+			result = (
+					  (id == otherDataset.id)
+					  && ((createdAt == null) ? otherDataset.createdAt == null : createdAt.equals(otherDataset.createdAt))
+					  && ((updatedAt == null) ? otherDataset.updatedAt == null : updatedAt.equals(otherDataset.updatedAt))
+					  && ((csvDump == null) ? otherDataset.csvDump == null : csvDump.equals(otherDataset.csvDump))
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(Dataset.class.getSimpleName());
+		sb.append("[id: " + Integer.valueOf(id).toString() + ",");
+		sb.append("createdAt: "
+				+ createdAt.toString(TimeFormats.stdOutputFormat) + ",");
+		sb.append("updatedAt: "
+				+ updatedAt.toString(TimeFormats.stdOutputFormat) + ",");
+		sb.append("csvDump: " + csvDump + "]");
+		return sb.toString();
+	}
 }

@@ -15,7 +15,9 @@
  */
 package org.cbarrett.scotchservices.domain;
 
-public class RefDistilleryStatus {
+import org.cbarrett.common.domain.DomainObject;
+
+public class RefDistilleryStatus implements DomainObject {
 
 	private int id;
 	private String statusName;
@@ -44,4 +46,41 @@ public class RefDistilleryStatus {
 	public void setStatusDescription(String statusDescription) {
 		this.statusDescription = statusDescription;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		
+		result = prime * result + id;
+		result = prime * result + ((statusName == null) ? 0 : statusName.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof RefDistilleryStatus)) {
+			result = false;
+		} else {
+			RefDistilleryStatus otherStatus = (RefDistilleryStatus) otherObject;
+			result = (
+					  (id == otherStatus.id)
+					  && ((statusName == null) ? otherStatus.statusName == null : statusName.equals(otherStatus.statusName))
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(RefDistilleryStatus.class.getSimpleName());
+		sb.append("[id: " + Integer.valueOf(id).toString() + ",");
+		sb.append("statusName: " + statusName + "]");
+		return sb.toString();
+	}	
 }

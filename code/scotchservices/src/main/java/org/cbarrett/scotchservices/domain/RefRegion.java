@@ -15,7 +15,10 @@
  */
 package org.cbarrett.scotchservices.domain;
 
-public class RefRegion {
+import org.cbarrett.common.domain.DomainObject;
+import org.cbarrett.scotchservices.lcbo.domain.Dataset;
+
+public class RefRegion implements DomainObject {
 
 	private int id;
 	private String regionName;
@@ -44,4 +47,41 @@ public class RefRegion {
 	public void setRegionDescription(String regionDescription) {
 		this.regionDescription = regionDescription;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		
+		result = prime * result + id;
+		result = prime * result + ((regionName == null) ? 0 : regionName.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof RefRegion)) {
+			result = false;
+		} else {
+			RefRegion otherRegion = (RefRegion) otherObject;
+			result = (
+					  (id == otherRegion.id)
+					  && ((regionName == null) ? otherRegion.regionName == null : regionName.equals(otherRegion.regionName))
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(Dataset.class.getSimpleName());
+		sb.append("[id: " + Integer.valueOf(id).toString() + ",");
+		sb.append("regionName: " + regionName + "]");
+		return sb.toString();
+	}	
 }

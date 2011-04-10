@@ -15,7 +15,9 @@
  */
 package org.cbarrett.scotchservices.lcbo.domain;
 
-public abstract class GenericLCBOResponse {
+import org.cbarrett.common.domain.DomainObject;
+
+public abstract class GenericLCBOResponse implements DomainObject {
 	private int status;
 	private String message;
 	
@@ -32,4 +34,40 @@ public abstract class GenericLCBOResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		
+		result = prime * result + status;
+		result = prime * result + ((message == null) ? 0 : message.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof GenericLCBOResponse)) {
+			result = false;
+		} else {
+			GenericLCBOResponse otherResponse = (GenericLCBOResponse) otherObject;
+			result = (
+					  (status == otherResponse.status)
+					  && ((message == null) ? otherResponse.message == null : message.equals(otherResponse.message))
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(GenericLCBOResponse.class.getSimpleName());
+		sb.append("[status: " + Integer.valueOf(status).toString() + ",");
+		sb.append("message: " + message + "]");
+		return sb.toString();
+	}}

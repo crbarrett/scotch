@@ -139,4 +139,23 @@ public class Pager {
 	public void setFinalPagePath(String finalPagePath) {
 		this.finalPagePath = finalPagePath;
 	}	
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(Pager.class.getSimpleName());
+		sb.append("[records: " + Integer.valueOf(recordsPerPage).toString() + ",");
+		sb.append("totalRecordCount: " + Integer.valueOf(totalRecordCount).toString() + ",");
+		sb.append("currentPageRecordCount: " + Integer.valueOf(currentPageRecordCount).toString() + ",");
+		sb.append("isFirstPage: " + Boolean.valueOf(isFirstPage).toString() + ",");
+		sb.append("isFinalPage: " + Boolean.valueOf(isFinalPage).toString() + ",");
+		sb.append("currentPage: " + Integer.valueOf(currentPage).toString() + ",");
+		sb.append("currentPagePath: " + currentPagePath + ",");
+		sb.append("nextPage: " + Integer.valueOf(nextPage).toString() + ",");
+		sb.append("nextPagePath: " + nextPagePath + ",");
+		sb.append("previousPage: " + Integer.valueOf(previousPage).toString() + ",");
+		sb.append("previousPagePath: " + previousPagePath + ",");
+		sb.append("finalPage: " + Integer.valueOf(finalPage).toString() + ",");
+		sb.append("finalPagePath: " + finalPagePath + "]");
+		return sb.toString();
+	}
 }

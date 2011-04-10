@@ -15,9 +15,10 @@
  */
 package org.cbarrett.scotchservices.lcbo.domain;
 
+import org.cbarrett.common.domain.DomainObject;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class DatasetResponse extends GenericLCBOResponse{
+public class DatasetResponse extends GenericLCBOResponse implements DomainObject {
 	private Dataset dataset;
 	
 	public Dataset getDataset() {
@@ -28,4 +29,40 @@ public class DatasetResponse extends GenericLCBOResponse{
 	public void setDataset(Dataset dataset) {
 		this.dataset = dataset;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+
+		result = prime * result + ((dataset == null) ? 0 : dataset.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof DatasetResponse)) {
+			result = false;
+		} else {
+			DatasetResponse otherResponse = (DatasetResponse) otherObject;
+			result = (
+					  (super.equals(otherResponse))
+					  && (dataset == null) ? otherResponse == null : dataset.equals(otherResponse.dataset)
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(DatasetResponse.class.getSimpleName());
+		sb.append("[datasetResponse: " + super.toString() + ",");
+		sb.append("dataset: " + dataset.toString() + "]");
+		return sb.toString();
+	}	
 }

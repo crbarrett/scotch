@@ -17,9 +17,10 @@ package org.cbarrett.scotchservices.lcbo.domain;
 
 import java.util.List;
 
+import org.cbarrett.common.domain.DomainObject;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class DatasetsResponse extends GenericLCBOResponse {
+public class DatasetsResponse extends GenericLCBOResponse implements DomainObject {
 	private Pager pager;
 	private List<Dataset> pageOfDatasets;
 	
@@ -37,5 +38,40 @@ public class DatasetsResponse extends GenericLCBOResponse {
 	@JsonProperty("result")
 	public void setDatasets(List<Dataset> datasets) {
 		this.pageOfDatasets = datasets;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((pageOfDatasets == null) ? 0 : pageOfDatasets.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof DatasetsResponse)) {
+			result = false;
+		} else {
+			DatasetsResponse otherDatasets = (DatasetsResponse) otherObject;
+			result = (
+					  (super.equals(otherDatasets))
+					  && (pageOfDatasets == null) ? otherDatasets == null : pageOfDatasets.equals(otherDatasets.pageOfDatasets)
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(DatasetsResponse.class.getSimpleName());
+		sb.append("[datasetsResponse: " + super.toString() + ",");
+		sb.append("datasets: " + pageOfDatasets.toString() + "]");
+		return sb.toString();
 	}
 }

@@ -15,7 +15,9 @@
  */
 package org.cbarrett.scotchservices.domain;
 
-public class RefStyle {
+import org.cbarrett.common.domain.DomainObject;
+
+public class RefStyle implements DomainObject {
 
 	private int id;
 	private String styleName;
@@ -44,4 +46,41 @@ public class RefStyle {
 	public void setStyleDescription(String styleDescription) {
 		this.styleDescription = styleDescription;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		
+		result = prime * result + id;
+		result = prime * result + ((styleName == null) ? 0 : styleName.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof RefStyle)) {
+			result = false;
+		} else {
+			RefStyle otherStyle = (RefStyle) otherObject;
+			result = (
+					  (id == otherStyle.id)
+					  && ((styleName == null) ? otherStyle.styleName == null : otherStyle.equals(otherStyle.styleName))
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(RefStyle.class.getSimpleName());
+		sb.append("[id: " + Integer.valueOf(id).toString() + ",");
+		sb.append("styleName: " + styleName + "]");
+		return sb.toString();
+	}	
 }
