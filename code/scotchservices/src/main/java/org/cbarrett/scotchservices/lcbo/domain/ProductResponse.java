@@ -15,9 +15,10 @@
  */
 package org.cbarrett.scotchservices.lcbo.domain;
 
+import org.cbarrett.common.domain.DomainObject;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class ProductResponse extends GenericLCBOResponse {
+public class ProductResponse extends GenericLCBOResponse implements DomainObject {
 	private Product product;
 	
 	public Product getProduct() {
@@ -28,4 +29,40 @@ public class ProductResponse extends GenericLCBOResponse {
 	public void setProduct(Product product) {
 		this.product= product;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof ProductResponse)) {
+			result = false;
+		} else {
+			ProductResponse otherResponse = (ProductResponse) otherObject;
+			result = (
+					  (super.equals(otherResponse))
+					  && (product == null) ? otherResponse == null : product.equals(otherResponse.product)
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(ProductResponse.class.getSimpleName());
+		sb.append("[productResponse: " + super.toString() + ",");
+		sb.append("product: " + product.toString() + "]");
+		return sb.toString();
+	}	
 }

@@ -15,12 +15,14 @@
  */
 package org.cbarrett.scotchservices.lcbo.domain;
 
+import org.cbarrett.common.domain.DomainObject;
+import org.cbarrett.common.util.TimeFormats;
 import org.cbarrett.scotchservices.lcbo.domain.serializer.JsonDateTimeDeserializer;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.joda.time.DateTime;
 
-public class Product {
+public class Product implements DomainObject {
 	
 	public enum StockType {
 	    LCBO, VINTAGES 
@@ -333,7 +335,6 @@ public class Product {
 		this.productNo = productNo;
 	}
 	
-
 	/*
 	alcohol_content	 Alcohol content (Divide by 100 for decimal value)
 	bonus_reward_miles	 Number of bonus air miles
@@ -377,4 +378,60 @@ public class Product {
 	value_added_promotion_description	 Contents of the value added promotion offer if available
 	volume_in_milliliters	 Total volume of all units in package
 	*/
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		
+		result = prime * result + id.hashCode();
+		result = prime * result + name.hashCode();
+		result = prime * result + producer_name.hashCode();
+		result = prime * result + origin.hashCode();
+		result = prime * result + (is_dead ? 1 : 0);
+		result = prime * result + (is_discontinued ? 1 : 0);
+		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
+		
+		return result;
+	}
+	@Override
+	public boolean equals(Object otherObject) {
+		boolean result = false;
+
+		if (this == otherObject) {
+			result = true;
+		} else if (otherObject == null) {
+			result = false;
+		} else if (!(otherObject instanceof Product)) {
+			result = false;
+		} else {
+			Product otherProduct = (Product) otherObject;
+			result = (
+					  (id.equals(otherProduct.id))
+					  && (name.equals(otherProduct.name))
+					  && ((producer_name == null) ? otherProduct.producer_name == null : producer_name.equals(otherProduct.producer_name))
+					  && ((origin == null) ? otherProduct.origin == null : origin.equals(otherProduct.origin))
+					  && (is_dead == otherProduct.is_dead)
+					  && (is_discontinued == otherProduct.is_discontinued)
+					  && ((updatedAt == null) ? otherProduct.updatedAt == null : updatedAt.equals(otherProduct.updatedAt))
+					 );
+		}
+		return result;
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(Dataset.class.getSimpleName());
+		sb.append("[id: " + id + ",");
+		sb.append("name: " + name + ",");
+		sb.append("producer_name: " + producer_name + ",");
+		sb.append("origin: " + origin + ",");
+		sb.append("primary_category: " + primary_category + ",");
+		sb.append("secondary_category: " + secondary_category + ",");
+		sb.append("is_dead: " + Boolean.valueOf(is_dead) + ",");
+		sb.append("is_discontinued: " + Boolean.valueOf(is_discontinued) + ",");
+		sb.append("stock_type: " + stock_type.toString() + ",");
+		sb.append("sugar_content: " + sugar_content + ",");
+		sb.append("releasedOn: " + releasedOn.toString(TimeFormats.stdOutputFormat) + ",");
+		sb.append("updatedAt: " + updatedAt.toString(TimeFormats.stdOutputFormat) + "]");
+		return sb.toString();
+	}	
 }
