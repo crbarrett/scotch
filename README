@@ -1,0 +1,12 @@
+Abstract:
+Noodling with rest services to integrate my single malts database with LCBO product database.
+
+Design:
+Emergent.  All Spring3 based MVC/WS using jdbc and rest template objects.
+
+Testing:
+Only the dataset methods have any testing.
+
+Future:
+Complete LCBO client interface, provide new products information and schedule updates.
+Full multi-user application.
