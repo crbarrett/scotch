@@ -1,7 +1,7 @@
 package org.cbarrett.scotchservices.lcbo;
 
-import org.cbarrett.scotchservices.db.lcbo.LCBODatasetDAO;
-import org.cbarrett.scotchservices.db.lcbo.LCBODatasetDAOImpl;
+import org.cbarrett.scotchservices.lcbo.db.LCBODatasetDAO;
+import org.cbarrett.scotchservices.lcbo.db.LCBODatasetDAOImpl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

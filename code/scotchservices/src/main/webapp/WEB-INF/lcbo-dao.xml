@@ -12,14 +12,13 @@
 				http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
 
 	<!-- LCBO Dao Objects -->
-	<bean id="lcboDatasetDao"
-		class="org.cbarrett.scotchservices.db.lcbo.LCBODatasetDAOImpl">
+	<bean id="lcboDatasetDao" class="org.cbarrett.scotchservices.db.lcbo.LCBODatasetDAOImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
 	<bean id="lcboNewProductDao"
 		class="org.cbarrett.scotchservices.db.lcbo.LCBONewProductDAOImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
 </beans>
