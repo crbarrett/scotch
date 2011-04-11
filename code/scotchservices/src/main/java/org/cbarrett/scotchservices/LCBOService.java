@@ -15,11 +15,15 @@
  */
 package org.cbarrett.scotchservices;
 
+import java.util.List;
+
+import org.cbarrett.scotchservices.lcbo.domain.Product;
+
 public interface LCBOService {
 	public String getStartingDataset();
 	
 	public void getMissingDatasets();
-	public void getNewProductList();
+	public List<Product> getNewProductList();
 	public void getProductDetails(String cspc);
 	
 	public void searchForProduct(String search);

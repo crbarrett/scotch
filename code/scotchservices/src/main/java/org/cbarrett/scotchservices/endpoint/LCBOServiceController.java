@@ -15,7 +15,10 @@
  */
 package org.cbarrett.scotchservices.endpoint;
 
+import java.util.List;
+
 import org.cbarrett.scotchservices.LCBOService;
+import org.cbarrett.scotchservices.lcbo.domain.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +38,14 @@ public class LCBOServiceController {
 		String result = lcboService.getStartingDataset();
 		ModelAndView mav = new ModelAndView("reset",
 				"reset", result);
+		return mav;
+	}
+
+	@RequestMapping(value = "/newproducts.*", method = RequestMethod.GET)
+	public ModelAndView getNewProducts() {
+		List<Product> result = lcboService.getNewProductList();
+		ModelAndView mav = new ModelAndView("newproducts",
+				"newProducts", result);
 		return mav;
 	}
 }

@@ -18,6 +18,7 @@ package org.cbarrett.scotchservices.lcbo.domain;
 import org.cbarrett.common.domain.DomainObject;
 import org.cbarrett.common.util.TimeFormats;
 import org.cbarrett.scotchservices.lcbo.domain.serializer.JsonDateTimeDeserializer;
+import org.cbarrett.scotchservices.lcbo.domain.serializer.JsonShortDateDeserializer;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.joda.time.DateTime;
@@ -287,7 +288,7 @@ public class Product implements DomainObject {
 	public void setProducer_name(String producerName) {
 		producer_name = producerName;
 	}
-	@JsonDeserialize(using = JsonDateTimeDeserializer.class)
+	@JsonDeserialize(using = JsonShortDateDeserializer.class)
 	@JsonProperty("released_on")	
 	public void setReleasedOn(DateTime releasedOn) {
 		this.releasedOn = releasedOn;
