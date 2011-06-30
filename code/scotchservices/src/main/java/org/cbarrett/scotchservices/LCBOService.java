@@ -21,8 +21,8 @@ import org.cbarrett.scotchservices.lcbo.domain.Product;
 
 public interface LCBOService {
 	public String getStartingDataset();
+	public String getMissingDatasets();
 	
-	public void getMissingDatasets();
 	public List<Product> getNewProductList();
 	public void getProductDetails(String cspc);
 	

@@ -48,4 +48,13 @@ public class LCBOServiceController {
 				"newProducts", result);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/missingdatasets.*", method = RequestMethod.GET)
+	public ModelAndView getMissingDatasets() {
+		String result = lcboService.getMissingDatasets();
+		ModelAndView mav = new ModelAndView("missingDatasets",
+				"missingDatasets", result);
+		return mav;
+	}
+	
 }

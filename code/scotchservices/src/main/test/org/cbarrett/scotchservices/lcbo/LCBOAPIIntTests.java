@@ -1,5 +1,7 @@
 package org.cbarrett.scotchservices.lcbo;
 
+import java.util.List;
+
 import org.cbarrett.scotchservices.lcbo.domain.Dataset;
 import org.cbarrett.scotchservices.lcbo.domain.Product;
 
@@ -12,20 +14,28 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/lcborest-beans.xml")
+@ContextConfiguration(locations={"/lcborest-beans.xml"})
 public class LCBOAPIIntTests {
 
     @Autowired
     private ApplicationContext applicationContext;
-    
-    //Dataset	/datasets/
+        
+    // Generic API Tests
+    //Datasets	/datasets
     @Test
-	public void testDatasetsAPI() throws Exception {
+	public void testDatasetsAPI() throws Exception {    	
         LCBOClient lcbo = applicationContext.getBean(LCBOClient.class);
-        Product product = lcbo.getProduct("211730");
+        List<Dataset> dss = lcbo.getDatasetsFirstPage();
 
-        System.out.println("Product : " + product.getProductNo());
-        System.out.println("UpdatedAt : " + product.getUpdatedAt());
+        Dataset ds = dss.get(0);
+        
+        //check result
+        Assert.notNull(ds, "ain't null");
+        Assert.isTrue(!(ds.getCsvDump().equals(null)), "has dump file");
+
+        //output fun
+        System.out.println("Dataset : " + ds.getId());
+        System.out.println("   # of added products : " + ds.getAddedProductIds().size());
     }
 
     //Dataset	/datasets/:dataset_id

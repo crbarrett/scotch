@@ -39,6 +39,7 @@ public class LCBOServiceImpl implements LCBOService {
 	public String getStartingDataset() {
 		// drop the current lcbo dataset content
 		lcboDatasetDAO.truncate();
+		lcboNewProductDAO.truncate();
 		
 		// find newest dataset (all, but paged)
 		List<Dataset> ds = lcboClient.getDatasetsFirstPage();
@@ -61,7 +62,7 @@ public class LCBOServiceImpl implements LCBOService {
 		return newDs.toString();
 	}
 	
-	public void getMissingDatasets() {
+	public String getMissingDatasets() {
 		// find newest dataset (all, but paged)
 		List<Dataset> ds = lcboClient.getDatasetsFirstPage();
 		
@@ -71,8 +72,11 @@ public class LCBOServiceImpl implements LCBOService {
 		
 		// retrieve missing datasets (or start with latest)
 		if (maxStoredDsId != -1) {
-			for (int i = currentDsId - 1; i > maxStoredDsId; i++) {
+			for (int i = maxStoredDsId + 1; i <= currentDsId; i++) {
 				Dataset missingDs = lcboClient.getDataset(i);
+
+				// store this ds
+				lcboDatasetDAO.add(missingDs);
 				
 				List<String> cspcList = missingDs.getAddedProductIds();
 				int newProductCount = cspcList.size();
@@ -81,11 +85,13 @@ public class LCBOServiceImpl implements LCBOService {
 					String currentCspc = cspcList.get(j);
 					Product currentProduct = lcboClient.getProduct(currentCspc);
 					
-					// save new product
+					// save new product (skip existing cspcs)
 					lcboNewProductDAO.add(currentProduct);
 				}
 			}
 		}
+		
+		return ds.get(0).toString();
 	}
 
 	public List<Product> getNewProductList() {

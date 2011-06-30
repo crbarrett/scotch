@@ -13,6 +13,7 @@
 
 	<!-- Scan for controllers -->
 	<context:component-scan base-package="org.cbarrett.scotchservices" />
+
 	<tx:annotation-driven />
 	<mvc:annotation-driven />
 
