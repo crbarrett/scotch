@@ -36,7 +36,7 @@ public class LCBOServiceImpl implements LCBOService {
 	@Autowired
 	private LCBONewProductDAO lcboNewProductDAO;
 	
-	public String getStartingDataset() {
+	public String resetDatasets() {
 		// drop the current lcbo dataset content
 		lcboDatasetDAO.truncate();
 		lcboNewProductDAO.truncate();
@@ -68,7 +68,12 @@ public class LCBOServiceImpl implements LCBOService {
 		
 		// current latest dataset
 		int currentDsId = ds.get(0).getId();
-		int maxStoredDsId = lcboDatasetDAO.getMaxId();
+		int maxStoredDsId = -1;
+		maxStoredDsId = lcboDatasetDAO.getMaxId();
+		if (maxStoredDsId == -1) {
+			// store latest
+			lcboDatasetDAO.add(ds.get(0));			
+		}
 		
 		// retrieve missing datasets (or start with latest)
 		if (maxStoredDsId != -1) {

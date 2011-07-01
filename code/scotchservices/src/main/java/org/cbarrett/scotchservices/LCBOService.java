@@ -20,7 +20,7 @@ import java.util.List;
 import org.cbarrett.scotchservices.lcbo.domain.Product;
 
 public interface LCBOService {
-	public String getStartingDataset();
+	public String resetDatasets();
 	public String getMissingDatasets();
 	
 	public List<Product> getNewProductList();

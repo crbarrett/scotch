@@ -81,10 +81,7 @@
 			<value>classpath:database.properties</value>
 		</property>
 	</bean>
-	<!--
-		the DataSource (parameterized for configuration via a
-		PropertyPlaceHolderConfigurer)
-	-->
+	<!-- the DataSource (parameterized for configuration via a PropertyPlaceHolderConfigurer) -->
 	<bean id="dataSource" destroy-method="close"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -96,4 +93,5 @@
 	<import resource="scotch-dao.xml" />
 	<import resource="lcbo-dao.xml" />
 	<import resource="lcborest-beans.xml" />
+	<import resource="scheduler-beans.xml" />
 </beans>
