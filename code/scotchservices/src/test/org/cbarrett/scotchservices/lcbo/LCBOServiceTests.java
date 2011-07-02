@@ -20,7 +20,7 @@ public class LCBOServiceTests {
     public void testStartDataset() throws Exception {
     	// get first page of datasets
         LCBOService lcbo = applicationContext.getBean(LCBOService.class);
-    	String response = lcbo.getStartingDataset();
+    	String response = lcbo.resetDatasets();
 
         //output fun
         System.out.println("Dataset : " + response);

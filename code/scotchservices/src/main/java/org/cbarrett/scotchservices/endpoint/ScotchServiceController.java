@@ -37,7 +37,7 @@ public class ScotchServiceController {
 	@Autowired
 	ScotchService scotchService;
 
-	@RequestMapping(value = "/malts/{name}.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/malts/{name}", method = RequestMethod.GET)
 	public ModelAndView getMaltByName(@PathVariable("name") String name) {
 		Malt malt = scotchService.getMaltByName(name);
 		ModelAndView mav = new ModelAndView("malt",
@@ -45,7 +45,7 @@ public class ScotchServiceController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/malts.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/malts", method = RequestMethod.GET)
 	public ModelAndView getMalts() {
 		List<Malt> malts = scotchService.getMalts();
 		ModelAndView mav = new ModelAndView("malt",
@@ -53,7 +53,7 @@ public class ScotchServiceController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/{distillery}/malts.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/{distillery}/malts", method = RequestMethod.GET)
 	public ModelAndView getMaltsByDistillery(
 			@PathVariable("distillery") String distillery) {
 		List<Malt> malts = scotchService.getMaltsByDistillery(distillery);
@@ -63,19 +63,19 @@ public class ScotchServiceController {
 	}
 	
 	
-	@RequestMapping(value = "/refdistillerystatus.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/refdistillerystatus", method = RequestMethod.GET)
 	public ModelAndView getDistilleryStatus() {
 		List<RefDistilleryStatus> statii = scotchService.getDistilleryStatus();
 		ModelAndView mav = new ModelAndView("status", RefDistilleryStatus.class.getName(), statii);
 		return mav;
 	}	
-	@RequestMapping(value = "/refregion.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/refregion", method = RequestMethod.GET)
 	public ModelAndView getRegion() {
 		List<RefRegion> region = scotchService.getRegion();
 		ModelAndView mav = new ModelAndView("region", RefRegion.class.getName(), region);
 		return mav;
 	}	
-	@RequestMapping(value = "/refstyle.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/refstyle", method = RequestMethod.GET)
 	public ModelAndView getStyle() {
 		List<RefStyle> style= scotchService.getStyle();
 		ModelAndView mav = new ModelAndView("style", RefStyle.class.getName(), style);

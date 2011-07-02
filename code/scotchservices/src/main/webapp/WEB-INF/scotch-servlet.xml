@@ -26,12 +26,10 @@
 				<entry key="html" value="text/html" />
 				<entry key="xml" value="text/xml" />
 				<entry key="json" value="application/json" />
-				<entry key="atom" value="application/atom+xml" />
-				<entry key="rss" value="application/rss+xml" />
 			</map>
 		</property>
 
-		<property name="defaultContentType" value="application/json" />
+		<property name="defaultContentType" value="text/html" />
 		<property name="ignoreAcceptHeader" value="true" />
 		<property name="favorPathExtension" value="true" />
 
@@ -53,8 +51,7 @@
 		</property>
 		<property name="viewResolvers">
 			<list>
-				<bean
-					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 					<property name="viewClass"
 						value="org.springframework.web.servlet.view.JstlView" />
 					<property name="cache" value="false" />

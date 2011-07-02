@@ -33,7 +33,7 @@ public class LCBOServiceController {
 	@Autowired
 	LCBOService lcboService;
 
-	@RequestMapping(value = "/resetdataset.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/resetdataset", method = RequestMethod.GET)
 	public ModelAndView resetDatasetInfo() {
 		String result = lcboService.resetDatasets();
 		ModelAndView mav = new ModelAndView("reset",
@@ -41,7 +41,7 @@ public class LCBOServiceController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/newproducts.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/newproducts", method = RequestMethod.GET)
 	public ModelAndView getNewProducts() {
 		List<Product> result = lcboService.getNewProductList();
 		ModelAndView mav = new ModelAndView("newproducts",
@@ -49,7 +49,7 @@ public class LCBOServiceController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/missingdatasets.*", method = RequestMethod.GET)
+	@RequestMapping(value = "/missingdatasets", method = RequestMethod.GET)
 	public ModelAndView getMissingDatasets() {
 		String result = lcboService.getMissingDatasets();
 		ModelAndView mav = new ModelAndView("missingDatasets",
