@@ -1,5 +1,5 @@
 Abstract:
-Noodling with rest services to integrate my single malts database with LCBO product database.
+Noodling with rest services to integrate my single malts database with LCBO product database and location information.
 
 Design:
 Emergent.  All Spring3 based MVC/WS using jdbc and rest template objects.
