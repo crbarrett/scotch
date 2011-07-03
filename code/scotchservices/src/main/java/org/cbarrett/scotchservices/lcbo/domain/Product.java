@@ -33,6 +33,7 @@ public class Product implements DomainObject {
 	private Boolean is_dead;
 	private String name;
 	// "tags":"ardbeg corryvreckan spirits scotch whisky scotland united kingdom mchs bottle"
+	// tags are the search mechanism for the LCBO, and can be error prone as they are highly unstructured
 	private String tags;
 	private Boolean is_discontinued;
 	private int price_in_cents;

@@ -41,10 +41,6 @@ public class TestController {
         mav.setViewName("test");
         mav.addObject("sampleContentList", TestController.contentList);
         
-        if (true) {
-        	throw new Exception("There, there's an exception");
-        }
-        
         return mav;
     }
 }
