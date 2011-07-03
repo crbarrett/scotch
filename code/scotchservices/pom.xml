@@ -8,6 +8,12 @@
 	<name>Scotch Web Services</name>
 	<url>http://scotchbaby.com</url>
 
+	<scm>
+		<connection>scm:git:git@github.com:crbarrett/scotch.git</connection>
+		<url>scm:git:git@github.com:crbarrett/scotch.git</url>
+		<developerConnection>scm:git:git@github.com:crbarrett/scotch.git</developerConnection>
+	</scm>
+
 	<properties>
 		<java.version>1.6</java.version>
 		<servlet-api.version>2.5</servlet-api.version>
