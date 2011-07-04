@@ -28,6 +28,7 @@ import org.cbarrett.scotchservices.lcbo.domain.DatasetResponse;
 import org.cbarrett.scotchservices.lcbo.domain.DatasetsResponse;
 import org.cbarrett.scotchservices.lcbo.domain.Product;
 import org.cbarrett.scotchservices.lcbo.domain.ProductResponse;
+import org.cbarrett.scotchservices.lcbo.domain.ProductsResponse;
 import org.springframework.http.client.CommonsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -76,6 +77,20 @@ public class LCBOClient {
         DatasetsResponse resp = restTemplate.getForObject(baseURL + "/" + datasetsServ + "/1", DatasetsResponse.class);
         checkStatus(resp.getStatus(), resp.getMessage());
        	return resp;
+    }
+    
+    public List<Product> getProductsFirstPage() {        
+        ProductsResponse resp = restTemplate.getForObject(baseURL + "/" + productServ, ProductsResponse.class);
+        checkStatus(resp.getStatus(), resp.getMessage());
+
+        return resp.getPageOfProducts();
+    }
+
+    public List<Product> getProductsByPage(int page) {
+        ProductsResponse resp = restTemplate.getForObject(baseURL + "/" + productServ + "/" + Integer.valueOf(page).toString(), ProductsResponse.class);
+        checkStatus(resp.getStatus(), resp.getMessage());
+
+        return resp.getPageOfProducts();  	
     }
     
     public Product getProduct(String cspc) {

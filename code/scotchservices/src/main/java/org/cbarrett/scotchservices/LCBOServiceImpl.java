@@ -103,8 +103,8 @@ public class LCBOServiceImpl implements LCBOService {
 		return lcboNewProductDAO.selectAll();
 	}
 	
-	public void getProductDetails(String cspc) {
-		
+	public Product getProductDetails(String cspc) {
+		return lcboClient.getProduct(cspc);
 	}
 	
 	public void searchForProduct(String search) {

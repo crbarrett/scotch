@@ -24,7 +24,7 @@ public interface LCBOService {
 	public String getMissingDatasets();
 	
 	public List<Product> getNewProductList();
-	public void getProductDetails(String cspc);
+	public Product getProductDetails(String cspc);
 	
 	public void searchForProduct(String search);
 	

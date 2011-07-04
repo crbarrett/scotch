@@ -60,10 +60,16 @@ public class LCBOAPIIntTests {
     @Test
 	public void testProductsAPI() throws Exception {
         LCBOClient lcbo = applicationContext.getBean(LCBOClient.class);
-        Product product = lcbo.getProduct("18");
+        List<Product> products = lcbo.getProductsFirstPage();
 
-        System.out.println("Product : " + product.getProductNo());
-        System.out.println("UpdatedAt : " + product.getUpdatedAt());
+        Product pro = products.get(0);
+        
+        //check result
+        Assert.notNull(pro, "ain't null");
+ 
+        //output fun        
+        System.out.println("Product : " + pro.getProductNo());
+        System.out.println("UpdatedAt : " + pro.getUpdatedAt());
     }
 
     //Product	/products/:product_id
