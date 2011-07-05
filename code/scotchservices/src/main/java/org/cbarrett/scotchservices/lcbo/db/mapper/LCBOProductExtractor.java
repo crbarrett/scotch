@@ -19,6 +19,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.cbarrett.scotchservices.lcbo.domain.Product;
+import org.cbarrett.scotchservices.lcbo.domain.Product.StockType;
+import org.joda.time.DateTime;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 public class LCBOProductExtractor implements ResultSetExtractor<Product> {
@@ -26,8 +28,21 @@ public class LCBOProductExtractor implements ResultSetExtractor<Product> {
 	public Product extractData(ResultSet rs) throws SQLException {
 		Product prod = new Product();
 		prod.setId(rs.getString(1));
-		prod.setName(rs.getString(2));
-		prod.setDescription(rs.getString(2));
+		prod.setProducer_name(rs.getString(2));
+		prod.setName(rs.getString(3));
+		prod.setDescription(rs.getString(4));
+		prod.setAlcohol_content(rs.getInt(5));
+		prod.setIs_dead(rs.getBoolean(6));
+		prod.setIs_discontinued(rs.getBoolean(7));
+		prod.setStock_type(StockType.valueOf(rs.getString(8)));
+		prod.setPrice_in_cents(rs.getInt(9));
+		prod.setOrigin(rs.getString(10));
+		prod.setPrimary_category(rs.getString(11));
+		prod.setSecondary_category(rs.getString(12));
+		prod.setReleasedOn(new DateTime((rs.getTimestamp(13)).getTime()));
+		prod.setInventory_count(rs.getInt(14));
+		prod.setUpdatedAt(new DateTime((rs.getTimestamp(15)).getTime()));
+		
 		return prod;
 	}
 }

@@ -49,10 +49,22 @@ public class LCBONewProductDAOImpl implements LCBONewProductDAO {
 	}	
 	
 	public void add(Product product) {
-        Map<String, Object> parameters = new HashMap<String, Object>(2);
+        Map<String, Object> parameters = new HashMap<String, Object>(15);
         parameters.put("cspc", product.getId());
+        parameters.put("producer_name", product.getProducer_name());
         parameters.put("name", product.getName());
         parameters.put("description", product.getDescription());
+		parameters.put("alcohol_content", product.getAlcohol_content());
+		parameters.put("is_dead", product.getIs_dead());
+		parameters.put("is_discontinued", product.getIs_discontinued());
+		parameters.put("stock_type", product.getStock_type());
+		parameters.put("price_in_cents", product.getPrice_in_cents());
+		parameters.put("origin", product.getOrigin());
+		parameters.put("primary_category", product.getPrimary_category());
+		parameters.put("secondary_category", product.getSecondary_category());
+		parameters.put("released_on", product.getReleasedOn());
+		parameters.put("inventory_count", product.getInventory_count());
+		parameters.put("updated_at", product.getUpdatedAt());
         
         try {
         	this.insertDataset.execute(parameters);
@@ -62,7 +74,7 @@ public class LCBONewProductDAOImpl implements LCBONewProductDAO {
 	}
 	
 	public List<Product> selectAll() {
-		return this.simpleJdbcTemplate.query("select CSPC, NAME, DESCRIPTION from NEW_PRODUCTS",
+		return this.simpleJdbcTemplate.query("select CSPC, PRODUCER_NAME, NAME, DESCRIPTION, ALCOHOL_CONTENT, IS_DISCONTINUED, IS_DEAD, STOCK_TYPE, PRICE_IN_CENTS, ORIGIN, PRIMARY_CATEGORY, SECONDARY_CATEGORY, RELEASED_ON, INVENTORY_COUNT, UPDATED_AT from NEW_PRODUCTS",
 				new LCBOProductRowMapper());		
 	}
 	
