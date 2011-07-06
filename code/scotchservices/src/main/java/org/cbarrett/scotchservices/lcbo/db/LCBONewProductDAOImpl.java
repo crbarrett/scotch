@@ -62,9 +62,9 @@ public class LCBONewProductDAOImpl implements LCBONewProductDAO {
 		parameters.put("origin", product.getOrigin());
 		parameters.put("primary_category", product.getPrimary_category());
 		parameters.put("secondary_category", product.getSecondary_category());
-		parameters.put("released_on", product.getReleasedOn());
+		parameters.put("released_on", (product.getReleasedOn() == null) ? null : new java.sql.Timestamp(product.getReleasedOn().getMillis()));
 		parameters.put("inventory_count", product.getInventory_count());
-		parameters.put("updated_at", product.getUpdatedAt());
+		parameters.put("updated_at", new java.sql.Timestamp(product.getUpdatedAt().getMillis()));
         
         try {
         	this.insertDataset.execute(parameters);

@@ -28,6 +28,9 @@ public class Product implements DomainObject {
 	public enum StockType {
 	    LCBO, VINTAGES 
 	}
+	public enum Sweetness {
+		XD, D, MD, M, MS, S
+	}
 	
 	private String id;
 	private Boolean is_dead;
@@ -57,7 +60,6 @@ public class Product implements DomainObject {
 	private int inventory_count;
 	private int inventory_volume_in_milliliters;
 	private int inventory_price_in_cents;
-	//TODO - ??
 	private String sugar_content;
 	private String producer_name;
 	private DateTime releasedOn;
@@ -431,7 +433,6 @@ public class Product implements DomainObject {
 		sb.append("is_dead: " + Boolean.valueOf(is_dead) + ",");
 		sb.append("is_discontinued: " + Boolean.valueOf(is_discontinued) + ",");
 		sb.append("stock_type: " + stock_type.toString() + ",");
-		sb.append("sugar_content: " + sugar_content + ",");
 		sb.append("releasedOn: " + releasedOn.toString(TimeFormats.stdOutputFormat) + ",");
 		sb.append("updatedAt: " + updatedAt.toString(TimeFormats.stdOutputFormat) + "]");
 		return sb.toString();
