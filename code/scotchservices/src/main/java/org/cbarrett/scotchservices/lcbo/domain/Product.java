@@ -423,7 +423,7 @@ public class Product implements DomainObject {
 	}
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder(Dataset.class.getSimpleName());
+		StringBuilder sb = new StringBuilder(Product.class.getSimpleName());
 		sb.append("[id: " + id + ",");
 		sb.append("name: " + name + ",");
 		sb.append("producer_name: " + producer_name + ",");
