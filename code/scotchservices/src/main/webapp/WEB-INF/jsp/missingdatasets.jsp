@@ -9,6 +9,6 @@
 <title>Dataset Reset</title>
 </head>
 <body>
-	Datasets updated to version; ${missingDataset}
+	Datasets updated to version; <c:out value="${missingDatasets}" />
 </body>
 </html>

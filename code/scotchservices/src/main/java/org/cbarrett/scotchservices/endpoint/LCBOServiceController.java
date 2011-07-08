@@ -53,7 +53,7 @@ public class LCBOServiceController {
 	@RequestMapping(value = "/missingdatasets", method = RequestMethod.GET)
 	public ModelAndView getMissingDatasets() {
 		String result = lcboService.getMissingDatasets();
-		ModelAndView mav = new ModelAndView("missingDatasets",
+		ModelAndView mav = new ModelAndView("missingdatasets",
 				"missingDatasets", result);
 		return mav;
 	}
