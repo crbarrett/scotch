@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>New Products at the LCBO</title>
+<link rel="stylesheet" type="text/css" href="../static/css/simple.css" />	
 </head>
 <body>
 
