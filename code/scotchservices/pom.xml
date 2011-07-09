@@ -41,6 +41,11 @@
 
 	<dependencies>
 		<dependency>
+		    <groupId>com.sun.syndication</groupId>
+		    <artifactId>com.springsource.com.sun.syndication</artifactId>
+		    <version>1.0.0.RC1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.6.0</version>

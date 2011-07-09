@@ -432,7 +432,7 @@ public class Product implements DomainObject {
 		sb.append("secondary_category: " + secondary_category + ", ");
 		sb.append("is_dead: " + Boolean.valueOf(is_dead) + ", ");
 		sb.append("is_discontinued: " + Boolean.valueOf(is_discontinued) + ", ");
-		sb.append("stock_type: " + stock_type.toString() + ", ");
+		sb.append("stock_type: " + ((stock_type == null) ? "???" : stock_type.toString()) + ", ");
 		if ( releasedOn != null) {
 			sb.append("releasedOn: " + releasedOn.toString(TimeFormats.stdOutputFormat) + ", ");
 		}
