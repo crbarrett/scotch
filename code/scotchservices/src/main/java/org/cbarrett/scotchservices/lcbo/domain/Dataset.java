@@ -246,11 +246,11 @@ public class Dataset implements DomainObject {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(Dataset.class.getSimpleName());
-		sb.append("[id: " + Integer.valueOf(id).toString() + ",");
+		sb.append(" [" + "id: " + Integer.valueOf(id).toString() + ", ");
 		sb.append("createdAt: "
-				+ createdAt.toString(TimeFormats.stdOutputFormat) + ",");
+				+ createdAt.toString(TimeFormats.stdOutputFormat) + ", ");
 		sb.append("updatedAt: "
-				+ updatedAt.toString(TimeFormats.stdOutputFormat) + ",");
+				+ updatedAt.toString(TimeFormats.stdOutputFormat) + ", ");
 		sb.append("csvDump: " + csvDump + "]");
 		return sb.toString();
 	}

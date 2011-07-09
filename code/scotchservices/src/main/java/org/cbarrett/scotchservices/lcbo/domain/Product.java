@@ -424,17 +424,17 @@ public class Product implements DomainObject {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(Product.class.getSimpleName());
-		sb.append("[id: " + id + ",");
-		sb.append("name: " + name + ",");
-		sb.append("producer_name: " + producer_name + ",");
-		sb.append("origin: " + origin + ",");
-		sb.append("primary_category: " + primary_category + ",");
-		sb.append("secondary_category: " + secondary_category + ",");
-		sb.append("is_dead: " + Boolean.valueOf(is_dead) + ",");
-		sb.append("is_discontinued: " + Boolean.valueOf(is_discontinued) + ",");
-		sb.append("stock_type: " + stock_type.toString() + ",");
+		sb.append(" [" + "id: " + id + ", ");
+		sb.append("name: " + name + ", ");
+		sb.append("producer_name: " + producer_name + ", ");
+		sb.append("origin: " + origin + ", ");
+		sb.append("primary_category: " + primary_category + ", ");
+		sb.append("secondary_category: " + secondary_category + ", ");
+		sb.append("is_dead: " + Boolean.valueOf(is_dead) + ", ");
+		sb.append("is_discontinued: " + Boolean.valueOf(is_discontinued) + ", ");
+		sb.append("stock_type: " + stock_type.toString() + ", ");
 		if ( releasedOn != null) {
-			sb.append("releasedOn: " + releasedOn.toString(TimeFormats.stdOutputFormat) + ",");
+			sb.append("releasedOn: " + releasedOn.toString(TimeFormats.stdOutputFormat) + ", ");
 		}
 		if (updatedAt != null) {
 			sb.append("updatedAt: " + updatedAt.toString(TimeFormats.stdOutputFormat));
