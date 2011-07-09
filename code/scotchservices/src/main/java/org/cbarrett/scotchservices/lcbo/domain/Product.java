@@ -433,8 +433,13 @@ public class Product implements DomainObject {
 		sb.append("is_dead: " + Boolean.valueOf(is_dead) + ",");
 		sb.append("is_discontinued: " + Boolean.valueOf(is_discontinued) + ",");
 		sb.append("stock_type: " + stock_type.toString() + ",");
-		sb.append("releasedOn: " + releasedOn.toString(TimeFormats.stdOutputFormat) + ",");
-		sb.append("updatedAt: " + updatedAt.toString(TimeFormats.stdOutputFormat) + "]");
+		if ( releasedOn != null) {
+			sb.append("releasedOn: " + releasedOn.toString(TimeFormats.stdOutputFormat) + ",");
+		}
+		if (updatedAt != null) {
+			sb.append("updatedAt: " + updatedAt.toString(TimeFormats.stdOutputFormat));
+		}
+		sb.append("]");
 		return sb.toString();
 	}	
 }
