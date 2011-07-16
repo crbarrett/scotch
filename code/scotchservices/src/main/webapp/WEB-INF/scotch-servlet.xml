@@ -65,8 +65,6 @@
 		</property>
 	</bean>
 
-	<bean id="newproducts" class="org.cbarrett.scotchservices.view.NewProductAtomView"/>
-
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
@@ -101,7 +99,4 @@
 	</bean>
 
 	<import resource="scotch-dao.xml" />
-	<import resource="lcbo-dao.xml" />
-	<import resource="lcborest-beans.xml" />
-	<import resource="scheduler-beans.xml" />
 </beans>

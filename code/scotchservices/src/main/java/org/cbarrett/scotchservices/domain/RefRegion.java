@@ -16,7 +16,6 @@
 package org.cbarrett.scotchservices.domain;
 
 import org.cbarrett.common.domain.DomainObject;
-import org.cbarrett.scotchservices.lcbo.domain.Dataset;
 
 public class RefRegion implements DomainObject {
 
@@ -79,7 +78,7 @@ public class RefRegion implements DomainObject {
 	}
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder(Dataset.class.getSimpleName());
+		StringBuilder sb = new StringBuilder(RefRegion.class.getSimpleName());
 		sb.append("[id: " + Integer.valueOf(id).toString() + ",");
 		sb.append("regionName: " + regionName + "]");
 		return sb.toString();
